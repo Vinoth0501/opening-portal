@@ -8,9 +8,6 @@ import { Provider } from "react-redux";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-// import { AuthProvider } from "@/context/AuthContext";
-// import Navbar from "@/components/Navbar";
-// import "../styles/global.css";
 const store = createStore(Reducer);
 
 export default function RootLayout({ children }) {
