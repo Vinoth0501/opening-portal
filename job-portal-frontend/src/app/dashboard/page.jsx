@@ -22,7 +22,7 @@ export default function Dashboard() {
           return;
         }
         setUser(null);
-        const { data } = await axios.get("/auth/me", {
+        const { data } = await axios.get("/api/auth/me", {
           headers: {
             Authorization: `Bearer ${token}`,
           },

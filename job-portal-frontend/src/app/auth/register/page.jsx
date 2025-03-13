@@ -18,7 +18,7 @@ export default function RegisterPage() {
   const onSubmit = async (data) => {
     try {
       await axios.post("/api/auth/signup", data);
-      router.push("/api/auth/login");
+      router.push("/auth/login");
       showToast("Data Register Successfully", "success");
     } catch (err) {
       showToast("Registration failed enter valid data", "error");

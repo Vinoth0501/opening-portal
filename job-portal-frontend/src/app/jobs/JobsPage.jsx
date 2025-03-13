@@ -86,7 +86,7 @@ const JobsPage = () => {
   const fetchJobs = async () => {
     setLoading(true);
     try {
-      const { data } = await axios.get("/jobs", {
+      const { data } = await axios.get("/api/jobs", {
         headers: { Authorization: `Bearer ${token}` },
       });
       setJobs(data);
@@ -128,9 +128,9 @@ const JobsPage = () => {
       };
 
       if (editJobId) {
-        await axios.put(`/jobs/${editJobId}`, formData, config);
+        await axios.put(`/api/jobs/${editJobId}`, formData, config);
       } else {
-        await axios.post("/jobs/", formData, config);
+        await axios.post("/api/jobs/", formData, config);
       }
 
       setSuccessAlert(true);
@@ -159,7 +159,7 @@ const JobsPage = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`/jobs/${id}`, {
+      await axios.delete(`/api/jobs/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       fetchJobs();
@@ -189,7 +189,7 @@ const JobsPage = () => {
   const [detailsData, setDetailsData] = useState(null);
   const handleViewDetails = async (id) => {
     try {
-      const { data } = await axios.get(`/jobs/${id}`, {
+      const { data } = await axios.get(`/api/jobs/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setDetailsData(data);
