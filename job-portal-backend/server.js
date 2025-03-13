@@ -11,10 +11,7 @@ const app = express();
 app.use(express.json());
 app.use(
   cors({
-    origin: [
-      "https://job-portal-b8he.vercel.app",
-      "https://job-portal-b8he-n31sfne58-vinoth2305s-projects.vercel.app",
-    ],
+    origin: "*",
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
     credentials: true,
   })
