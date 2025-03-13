@@ -37,7 +37,7 @@ const app = express();
 app.use(express.json());
 app.use(
   cors({
-    origin: "http://localhost:3000", // Allow frontend origin
+    origin: "https://job-portal-8257.vercel.app/", // Allow frontend origin
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
     credentials: true, // Allow cookies or authentication headers
   })
