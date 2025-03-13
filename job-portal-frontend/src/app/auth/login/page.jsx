@@ -27,7 +27,10 @@ export default function LoginPage() {
     const { email, password } = formData;
 
     try {
-      const { data } = await axios.post("/auth/signin", { email, password });
+      const { data } = await axios.post("/api/auth/signin", {
+        email,
+        password,
+      });
 
       if (data.token) {
         showToast("Log in Successfully", "success");
