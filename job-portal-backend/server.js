@@ -1,0 +1,68 @@
+// const express = require("express");
+// const mongoose = require("mongoose");
+// const cors = require("cors");
+// const dotenv = require("dotenv");
+// const authRoutes = require("./routes/authRoutes");
+// const jobRoutes = require("./routes/jobRoutes");
+
+// dotenv.config();
+// const app = express();
+
+// app.use(express.json());
+// app.use(cors());
+// app.use("/api/auth", authRoutes);
+// app.use("/api/jobs", jobRoutes);
+
+// mongoose
+//   .connect(process.env.MONGO_URI)
+//   .then(() => console.log("MongoDB Connected"))
+//   .catch((err) => console.log(err));
+
+// app.get("/", (req, res) => {
+//   res.send("API is running...");
+// });
+// const PORT = process.env.PORT || 5000;
+// app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+
+const express = require("express");
+const mongoose = require("mongoose");
+const cors = require("cors");
+const dotenv = require("dotenv");
+const authRoutes = require("./routes/authRoutes");
+const jobRoutes = require("./routes/jobRoutes");
+
+dotenv.config();
+const app = express();
+
+app.use(express.json());
+app.use(
+  cors({
+    origin: "http://localhost:3000", // Allow frontend origin
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
+    credentials: true, // Allow cookies or authentication headers
+  })
+);
+
+// Debugging logs
+console.log("🔄 Starting Server...");
+console.log("🔄 MongoDB URI:", process.env.MONGO_URI ? "Loaded" : "NOT LOADED");
+
+// Ensure routes are being set up correctly
+console.log("🔄 Setting up routes...");
+
+app.use("/api/auth", authRoutes);
+app.use("/api/jobs", jobRoutes);
+
+console.log("🔄 Attempting to connect to MongoDB...");
+
+mongoose
+  .connect(process.env.MONGO_URI)
+  .then(() => console.log("✅ MongoDB Connected"))
+  .catch((err) => console.error("❌ MongoDB Connection Failed:", err));
+
+app.get("/", (req, res) => {
+  res.send("API is running...");
+});
+
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
