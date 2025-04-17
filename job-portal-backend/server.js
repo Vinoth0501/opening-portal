@@ -11,11 +11,12 @@ const app = express();
 app.use(express.json());
 app.use(
   cors({
-    origin: "https://opening-portal-03.vercel.app",
+    origin: "https:localhost:3000",
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
     credentials: true,
   })
 );
+// origin: "https://opening-portal-03.vercel.app",
 
 console.log("Starting Server...");
 console.log("MongoDB URI:", process.env.MONGO_URI ? "Loaded" : "NOT LOADED");
